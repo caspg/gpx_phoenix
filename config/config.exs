@@ -10,6 +10,9 @@ use Mix.Config
 config :gpx_phoenix,
   ecto_repos: [GpxPhoenix.Repo]
 
+config :gpx_phoenix, GpxPhoenix.Repo,
+  types: GpxPhoenix.PostgresTypes
+
 # Configures the endpoint
 config :gpx_phoenix, GpxPhoenixWeb.Endpoint,
   url: [host: "localhost"],
