@@ -44,7 +44,8 @@ defmodule GpxPhoenix.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:geo, "~> 3.3"},
-      {:geo_postgis, "~> 3.3"}
+      {:geo_postgis, "~> 3.3"},
+      {:gpx_ex, git: "git@github.com:caspg/gpx_ex.git", tag: "0.1.0"}
     ]
   end
 
