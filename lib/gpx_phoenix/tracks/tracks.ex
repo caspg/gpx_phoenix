@@ -19,4 +19,14 @@ defmodule GpxPhoenix.Tracks do
   end
 
   def change_track(%Track{} = track), do: Track.changeset(track, %{})
+
+  def get_geom_as_geojson!(%{id: id}) do
+    query =
+      from(t in Track,
+        where: t.id == ^id,
+        select: fragment("ST_AsGeoJSON(?)::json", t.geom)
+      )
+
+    Repo.one!(query)
+  end
 end

@@ -1,0 +1,7 @@
+<ul>
+  <%= for track <- @tracks do %>
+    <li>
+      <%= link(track.name, to: Routes.tracks_path(@conn, :show, track.id)) %>
+    </li>
+  <% end %>
+</ul>

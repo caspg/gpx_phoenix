@@ -1,0 +1,6 @@
+<h2><%= @track.name %></h2>
+
+<div id="track-map" data-track-id="<%= @track.id %>" style="height: 500px; margin-top: 50px;"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
