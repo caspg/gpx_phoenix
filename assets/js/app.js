@@ -15,3 +15,33 @@ import "phoenix_html"
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
+
+function renderMap() {
+  const trackMap = document.getElementById('track-map')
+
+  if (!trackMap) {
+    return
+  }
+
+  // create leaflet map object
+  const map = L.map(trackMap)
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map)
+
+  const trackId = trackMap.dataset.trackId
+
+  // fetch geojson and add it to the map as new layer
+  fetch(`/tracks/${trackId}/geojson`)
+    .then(res => res.json())
+    .then(geojson => {
+      const geojsonLayer = L.geoJSON(geojson).addTo(map)
+
+      // handy function that makes sure our track will fit the map
+      map.fitBounds(geojsonLayer.getBounds())
+    })
+}
+
+renderMap()
